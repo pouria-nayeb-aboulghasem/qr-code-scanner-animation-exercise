@@ -1,0 +1,107 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+  color: #f1f1f1;
+}
+
+.scan__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scan__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.scan__qr {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background-image: url(../imgs/qr-code.png);
+  background-size: 400px;
+}
+
+.scan__qr::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../imgs/qr-code-active.png);
+  background-size: 400px;
+  animation: length 4s ease-in-out infinite;
+}
+
+@keyframes length {
+  0%,
+  100% {
+    height: 0;
+  }
+
+  50% {
+    height: 100%;
+  }
+}
+
+.scan__qr::after {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  width: calc(100% - 40px);
+  height: 2px;
+  background-color: #35fd5c;
+  filter: drop-shadow(0 0 20px #35fd5c) drop-shadow(0 0 60px #35fd5c);
+  animation: animateLine 4s ease-in-out infinite;
+}
+
+@keyframes animateLine {
+  0% {
+    top: 20px;
+  }
+
+  50% {
+    top: calc(100% - 20px);
+  }
+}
+
+.scan__title {
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-top: 1rem;
+  text-align: center;
+  letter-spacing: 2px;
+  filter: drop-shadow(0 0 20px #f1f1f1) drop-shadow(0 0 60px #f1f1f1);
+  animation: animateText 0.5s steps(1) infinite;
+}
+
+@keyframes animateText {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.scan__border {
+  position: absolute;
+  inset: 0;
+  background-image: url(../imgs/border.png);
+  background-size: 400px;
+  background-repeat: no-repeat;
+  animation: animateText 0.5s linear infinite;
+}
